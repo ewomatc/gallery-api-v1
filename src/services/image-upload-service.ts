@@ -1,19 +1,22 @@
-import multer from 'multer';
-import { google } from 'googleapis';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
-const upload = multer({ dest: 'uploads/' });
-
-// load credentials json file
-const credentials = require('../google-credentials/gallery-api-411416-4dd89186f520.json');
-
-// create a JWT client from the credentials file
-const auth = new google.auth.JWT({
-	email: credentials.client_email,
-	key: credentials.private_key,
-	scopes: ['https://www.googleapis.com/auth/drive.file'],
+cloudinary.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_KEY,
+	api_secret: process.env.CLOUDINARY_SECRET,
 });
 
-// inititlize google drive api
-const drive = google.drive({ version: 'v3', auth });
+const storage = new CloudinaryStorage({
+	cloudinary,
+	params: async (req: Request, file: any) => {
+		return {
+			allowed_format: async (req: Request, file: any) => {
+				['jpeg', 'jpg', 'png'];
+			},
+			folder: '/Gallery',
+		};
+	},
+});
 
-export { upload, auth, drive };
+export default storage;

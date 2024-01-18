@@ -5,12 +5,12 @@ export class Image {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({ nullable: false })
-	picture: string;
+	@Column()
+	url: string;
 
-	@Column({ nullable: false, length: 255 })
+	@Column({ length: 255 })
 	title: string;
 
-	@Column({ nullable: false })
+	@Column()
 	description: string;
 }

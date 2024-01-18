@@ -3,8 +3,7 @@ setup error-handling
 input-validation with express-validator
 
 ######
-Tell P Zion, the google service credentials file wont be deployed since it's in a .gitignore, what other way can I read the data from it.
-
+switch from google drive api to cloudinary
 
 ***********endpoints
 /api/health - server Health check

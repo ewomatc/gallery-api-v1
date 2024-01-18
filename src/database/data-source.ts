@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import { DataSource } from 'typeorm';
+import { Image } from '../entities/Image';
 
 export const AppDataSource = new DataSource({
 	type: 'mysql',
@@ -11,6 +12,6 @@ export const AppDataSource = new DataSource({
 	database: process.env.DB_DATABASE,
 	logging: true,
 	synchronize: true,
-	entities: ['src/entites/*.ts'],
+	entities: [Image],
 	subscribers: [],
 });

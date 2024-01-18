@@ -1,10 +1,10 @@
 import { Router } from 'express';
 const router = Router();
-import { upload } from '../services/image-upload-service';
+import storage from '../services/image-upload-service';
+import { uploadImage } from '../controllers/image.controller';
+import multer from 'multer';
+const upload = multer({ storage });
 
-import { healthCheck, uploadImage } from '../controllers/image.controller';
-
-router.get('/health', healthCheck);
-router.post('/upload', upload.single('image'), uploadImage);
+router.post('/uploadImage', upload.single('image'), uploadImage);
 
 export default router;
