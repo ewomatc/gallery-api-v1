@@ -5,6 +5,6 @@ import { uploadImage } from '../controllers/image.controller';
 import multer from 'multer';
 const upload = multer({ storage });
 
-router.post('/uploadImage', upload.single('image'), uploadImage);
+router.post('/image', upload.single('image'), uploadImage);
 
 export default router;

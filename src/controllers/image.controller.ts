@@ -7,16 +7,6 @@ export const uploadImage = async (req: Request, res: Response) => {
 	try {
 		console.log(req.file);
 
-		if (!req.file) {
-			return res.status(400).json({
-				statusCode: '04',
-				status: 'Bad Request',
-				message: 'No image file uploaded',
-			});
-		}
-
-		const imageUrl = req.file.path;
-
 		const { title, description } = req.body;
 
 		if (!req.body) {
@@ -26,6 +16,16 @@ export const uploadImage = async (req: Request, res: Response) => {
 				message: 'Invalid request',
 			});
 		}
+
+		if (!req.file) {
+			return res.status(400).json({
+				statusCode: '04',
+				status: 'Bad Request',
+				message: 'No image file uploaded',
+			});
+		}
+
+		const imageUrl = req.file.path;
 
 		const imageRepository = AppDataSource.getRepository(Image);
 		const savedImage = await imageRepository.save({

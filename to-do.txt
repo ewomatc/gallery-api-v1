@@ -1,13 +1,4 @@
-remove the health check route from under imagerouter to app.ts
 setup error-handling
 input-validation with express-validator
 
-######
-switch from google drive api to cloudinary
-
-***********endpoints
-/api/health - server Health check
-POST /api/images/ - upload a new image
-GET /api/images/ - get all images
-PUT /api/images/:imageIdOrUrl - update an image
-DELETE /api/images/:imageIdOrUrl - delete an image 
+Disable synchronize and logging for mysql.

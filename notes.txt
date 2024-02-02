@@ -1,0 +1,24 @@
+
+***********endpoints
+/api/health - server Health check
+POST /api/image/ - upload a new image
+GET /api/images/ - get all images
+PUT /api/image/:imageId - update an image
+DELETE /api/image/:imageId - delete an image
+
+
+response format
+--------------------------------------------
+{
+  statusCode: "00",
+  status: "success" or "failed",
+  data: {
+    image: {
+      url: "https://imageurl.com",
+      title: "image title",
+      description: "image description"
+    }
+  }
+}
+----------------------------------------------
+
